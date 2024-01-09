@@ -5,4 +5,33 @@ def Legendre(a,p):
     return pow(a, (p-1)// 2, p)
 
 def Tonelli (n,p):
+    assert Legendre(n,p) == 1
+    q = p - 1
+    u = 0
+    while q % 2 == 0:
+        q //= 2
+        u += 1
+    if u ==1:
+        return pow(n, (p + 1) //4, p)
+    for i in range(2, p):
+        if p -1 == Legendre(i, p):
+            break
     
+    e = pow(i, q, p)
+    g = pow(n, (q + 1) //2, p)
+    h = pow(n, q, p)
+    f = u
+    t = 0
+    while (h - 1) % p != 0:
+        t = (h * h) % p
+        for i in range(1,f):
+            if (t - 1) % p == 0:
+                break
+            t = (t * t) % p
+        b = pow(e, 1 << (f - i - 1), p)
+        e = (e * b) % p
+        g - (b * b) % p
+        h = (h * g) % p
+        f = i
+    return e
+print(Tonelli(a,p))
