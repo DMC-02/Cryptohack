@@ -13,7 +13,7 @@ while d == -1:
 
 n = p * q
 
-flag = b"XXXXXXXXXXXXXXXXXXXXXXX"
+flag = b"crypto{saltstack_fell_for_this!}"
 pt = bytes_to_long(flag)
 ct = pow(pt, e, n)
 
